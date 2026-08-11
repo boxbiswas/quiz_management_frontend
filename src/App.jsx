@@ -20,6 +20,10 @@ import UserList from './pages/Admin/Users/UserList';
 import UserProfile from './pages/Admin/Users/UserProfile';
 import QuizList from './pages/Admin/Quizzes/QuizList';
 import QuizForm from './pages/Admin/Quizzes/QuizForm';
+import QuestionsList from './pages/Admin/Quizzes/QuestionsList';
+import QuestionForm from './pages/Admin/Quizzes/QuestionForm';
+import CategoryList from './pages/Admin/Categories/CategoryList';
+import CategoryForm from './pages/Admin/Categories/CategoryForm';
 
 // Student Pages
 import StudentDashboard from './pages/Student/StudentDashboard';
@@ -46,7 +50,17 @@ function App() {
             <Route path="quizzes" element={<QuizList />} />
             <Route path="quizzes/new" element={<QuizForm />} />
             <Route path="quizzes/:id/edit" element={<QuizForm />} />
-            <Route path="categories" element={<AdminDashboard />} />
+            
+            {/* Question Management */}
+            <Route path="quizzes/:quizId/questions" element={<QuestionsList />} />
+            <Route path="quizzes/:quizId/questions/new" element={<QuestionForm />} />
+            <Route path="quizzes/:quizId/questions/:questionId/edit" element={<QuestionForm />} />
+            
+            {/* Category Management */}
+            <Route path="categories" element={<CategoryList />} />
+            <Route path="categories/new" element={<CategoryForm />} />
+            <Route path="categories/:id/edit" element={<CategoryForm />} />
+
             <Route path="leaderboard" element={<AdminDashboard />} />
           </Route>
         </Route>

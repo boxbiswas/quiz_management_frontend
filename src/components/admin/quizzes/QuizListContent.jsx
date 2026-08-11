@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { fetchAdminQuizzes, updateAdminQuizStatus, deleteAdminQuiz } from '../../../redux/slices/adminQuizzesSlice';
 import { Link } from 'react-router-dom';
-import { Search, Loader2, MoreVertical, Plus, Edit, Trash2, Eye, Globe, Lock } from 'lucide-react';
+import { Search, Loader2, MoreVertical, Plus, Edit, Trash2, Eye, Globe, Lock, ListChecks } from 'lucide-react';
 import { toast } from 'react-toastify';
 
 const QuizListContent = () => {
@@ -158,6 +158,13 @@ const QuizListContent = () => {
                                                 <>
                                                     <div className="fixed inset-0 z-40" onClick={() => setActionMenuOpen(null)}></div>
                                                     <div className="absolute right-6 top-10 w-48 bg-white/95 backdrop-blur-md rounded-xl shadow-glass-lg border border-warm-200/50 z-50 py-2 overflow-hidden animate-in fade-in zoom-in-95 duration-100">
+                                                        <Link 
+                                                            to={`/admin/quizzes/${quiz.id}/questions`}
+                                                            className="flex items-center gap-2.5 px-4 py-2 text-sm text-ink-700 hover:bg-warm-50 hover:text-amber-600 transition-colors"
+                                                        >
+                                                            <ListChecks className="w-4 h-4" />
+                                                            Manage Questions
+                                                        </Link>
                                                         <Link 
                                                             to={`/admin/quizzes/${quiz.id}/edit`}
                                                             className="flex items-center gap-2.5 px-4 py-2 text-sm text-ink-700 hover:bg-warm-50 hover:text-amber-600 transition-colors"

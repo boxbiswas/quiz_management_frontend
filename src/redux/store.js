@@ -3,6 +3,7 @@ import authReducer from './slices/authSlice';
 import adminUsersReducer from './slices/adminUsersSlice';
 import adminQuizzesReducer from './slices/adminQuizzesSlice';
 import adminCategoriesReducer from './slices/adminCategoriesSlice';
+import adminQuestionsReducer from './slices/adminQuestionsSlice';
 
 export const store = configureStore({
     reducer: {
@@ -10,5 +11,6 @@ export const store = configureStore({
         adminUsers: adminUsersReducer,
         adminQuizzes: adminQuizzesReducer,
         adminCategories: adminCategoriesReducer,
+        adminQuestions: adminQuestionsReducer,
     },
 });
