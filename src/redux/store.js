@@ -6,6 +6,7 @@ import adminCategoriesReducer from './slices/adminCategoriesSlice';
 import adminQuestionsReducer from './slices/adminQuestionsSlice';
 import studentQuizzesReducer from './slices/studentQuizzesSlice';
 import studentAttemptReducer from './slices/studentAttemptSlice';
+import studentDashboardReducer from './slices/studentDashboardSlice';
 
 export const store = configureStore({
     reducer: {
@@ -16,5 +17,6 @@ export const store = configureStore({
         adminQuestions: adminQuestionsReducer,
         studentQuizzes: studentQuizzesReducer,
         studentAttempt: studentAttemptReducer,
+        studentDashboard: studentDashboardReducer,
     },
 });
