@@ -27,6 +27,9 @@ import CategoryForm from './pages/Admin/Categories/CategoryForm';
 
 // Student Pages
 import StudentDashboard from './pages/Student/StudentDashboard';
+import StudentQuizList from './pages/Student/Quizzes/QuizList';
+import StudentQuizDetails from './pages/Student/Quizzes/QuizDetails';
+import StudentTakeQuiz from './pages/Student/Quizzes/TakeQuiz';
 
 function App() {
   return (
@@ -65,12 +68,17 @@ function App() {
           </Route>
         </Route>
 
-        {/* Protected Student Routes */}
+        {/* Student Routes */}
         <Route element={<ProtectedRoute allowedRoles={['STUDENT']} />}>
           <Route path="/student" element={<StudentLayout />}>
+            <Route index element={<Navigate to="/student/dashboard" replace />} />
             <Route path="dashboard" element={<StudentDashboard />} />
-            {/* Placeholders for future pages */}
-            <Route path="quizzes" element={<StudentDashboard />} />
+            
+            {/* Student Quizzes */}
+            <Route path="quizzes" element={<StudentQuizList />} />
+            <Route path="quizzes/:id" element={<StudentQuizDetails />} />
+            <Route path="quizzes/:id/take" element={<StudentTakeQuiz />} />
+            
             <Route path="history" element={<StudentDashboard />} />
             <Route path="leaderboard" element={<StudentDashboard />} />
           </Route>
