@@ -28,7 +28,7 @@ const AdminLayout = () => {
             <header className="sticky top-0 z-50 bg-warm-50/80 backdrop-blur-glass backdrop-saturate-150 border-b border-warm-200/30">
                 <div className="max-w-6xl mx-auto px-6 h-16 flex items-center justify-between">
                     <div className="flex items-center gap-2.5">
-                        <img src={icon} alt="QuizVerse Logo" className="w-8 h-8 mix-blend-multiply object-contain" />
+                        <img src={icon} alt="QuizVerse Logo" className="w-10 h-10 object-contain drop-shadow-sm" />
                         <span className="font-display font-semibold text-xl text-ink-900 tracking-tight">
                             QuizVerse <span className="text-[10px] ml-2 px-2.5 py-0.5 rounded-full bg-amber-500/10 text-amber-600 font-mono tracking-widest border border-amber-500/20 shadow-glass-sm">ADMIN</span>
                         </span>

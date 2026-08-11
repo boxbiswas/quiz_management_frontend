@@ -24,6 +24,7 @@ import QuestionsList from './pages/Admin/Quizzes/QuestionsList';
 import QuestionForm from './pages/Admin/Quizzes/QuestionForm';
 import CategoryList from './pages/Admin/Categories/CategoryList';
 import CategoryForm from './pages/Admin/Categories/CategoryForm';
+import AdminLeaderboard from './pages/Admin/Leaderboard';
 
 // Student Pages
 import StudentDashboard from './pages/Student/StudentDashboard';
@@ -32,6 +33,7 @@ import StudentQuizDetails from './pages/Student/Quizzes/QuizDetails';
 import StudentTakeQuiz from './pages/Student/Quizzes/TakeQuiz';
 import StudentQuizResults from './pages/Student/Quizzes/QuizResults';
 import StudentHistory from './pages/Student/History';
+import StudentLeaderboard from './pages/Student/Leaderboard';
 
 function App() {
   return (
@@ -66,7 +68,7 @@ function App() {
             <Route path="categories/new" element={<CategoryForm />} />
             <Route path="categories/:id/edit" element={<CategoryForm />} />
 
-            <Route path="leaderboard" element={<AdminDashboard />} />
+            <Route path="leaderboard" element={<AdminLeaderboard />} />
           </Route>
         </Route>
 
@@ -83,7 +85,7 @@ function App() {
             <Route path="attempts/:id/results" element={<StudentQuizResults />} />
             
             <Route path="history" element={<StudentHistory />} />
-            <Route path="leaderboard" element={<StudentDashboard />} />
+            <Route path="leaderboard" element={<StudentLeaderboard />} />
           </Route>
         </Route>
 

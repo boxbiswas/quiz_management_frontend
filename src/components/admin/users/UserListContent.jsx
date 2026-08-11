@@ -65,7 +65,7 @@ const UserListContent = () => {
                 </div>
             </div>
 
-            <div className="bg-white/60 backdrop-blur-glass backdrop-saturate-150 rounded-xl2 shadow-glass-md border-0 overflow-hidden">
+            <div className="bg-white/60 backdrop-blur-glass backdrop-saturate-150 rounded-xl2 shadow-glass-md border-0">
                 {loading && users.length === 0 ? (
                     <div className="flex flex-col items-center justify-center p-12">
                         <Loader2 className="w-8 h-8 animate-spin text-amber-500 mb-4" />
@@ -86,15 +86,15 @@ const UserListContent = () => {
                         <p className="text-ink-500 text-sm">Try adjusting your search term.</p>
                     </div>
                 ) : (
-                    <div className="overflow-x-auto">
+                    <div className="w-full">
                         <table className="w-full text-left border-collapse">
                             <thead>
                                 <tr className="border-b border-warm-200/40 bg-warm-50/50">
-                                    <th className="px-6 py-4 font-mono text-[11px] uppercase tracking-wider text-ink-500 font-semibold">Name</th>
+                                    <th className="px-6 py-4 font-mono text-[11px] uppercase tracking-wider text-ink-500 font-semibold rounded-tl-2xl">Name</th>
                                     <th className="px-6 py-4 font-mono text-[11px] uppercase tracking-wider text-ink-500 font-semibold">Email</th>
                                     <th className="px-6 py-4 font-mono text-[11px] uppercase tracking-wider text-ink-500 font-semibold">Joined</th>
                                     <th className="px-6 py-4 font-mono text-[11px] uppercase tracking-wider text-ink-500 font-semibold">Status</th>
-                                    <th className="px-6 py-4 font-mono text-[11px] uppercase tracking-wider text-ink-500 font-semibold text-right">Actions</th>
+                                    <th className="px-6 py-4 font-mono text-[11px] uppercase tracking-wider text-ink-500 font-semibold text-right rounded-tr-2xl">Actions</th>
                                 </tr>
                             </thead>
                             <tbody className="divide-y divide-warm-200/30">
