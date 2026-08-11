@@ -10,12 +10,14 @@ import ResetPassword from './pages/ResetPassword';
 
 // Routing Guards & Layouts
 import ProtectedRoute from './components/protectedRoutes';
-import AdminLayout from './layouts/AdminLayout';
-import StudentLayout from './layouts/StudentLayout';
+import AdminLayout from './components/layouts/AdminLayout';
+import StudentLayout from './components/layouts/StudentLayout';
 import Unauthorized from './pages/Unauthorized';
 
 // Admin Pages
 import AdminDashboard from './pages/Admin/AdminDashboard';
+import UserList from './pages/Admin/Users/UserList';
+import UserProfile from './pages/Admin/Users/UserProfile';
 
 // Student Pages
 import StudentDashboard from './pages/Student/StudentDashboard';
@@ -35,6 +37,9 @@ function App() {
         <Route element={<ProtectedRoute allowedRoles={['ADMIN']} />}>
           <Route path="/admin" element={<AdminLayout />}>
             <Route path="dashboard" element={<AdminDashboard />} />
+            {/* User Management */}
+            <Route path="users" element={<UserList />} />
+            <Route path="users/:id" element={<UserProfile />} />
             {/* Placeholders for future pages */}
             <Route path="quizzes" element={<AdminDashboard />} />
             <Route path="categories" element={<AdminDashboard />} />

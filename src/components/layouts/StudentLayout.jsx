@@ -2,10 +2,10 @@ import React from 'react';
 import { Outlet, NavLink, useNavigate } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
 import { LogOut } from 'lucide-react';
-import { logoutUser } from '../redux/slices/authSlice';
-import icon from '../assets/icon.png';
+import { logoutUser } from '../../redux/slices/authSlice';
+import icon from '../../assets/icon.png';
 
-const AdminLayout = () => {
+const StudentLayout = () => {
     const { user } = useSelector((state) => state.auth);
     const dispatch = useDispatch();
     const navigate = useNavigate();
@@ -30,21 +30,21 @@ const AdminLayout = () => {
                     <div className="flex items-center gap-2.5">
                         <img src={icon} alt="QuizVerse Logo" className="w-8 h-8 mix-blend-multiply object-contain" />
                         <span className="font-display font-semibold text-xl text-ink-900 tracking-tight">
-                            QuizVerse <span className="text-amber-500 text-sm ml-1 font-mono tracking-widest">ADMIN</span>
+                            QuizVerse
                         </span>
                     </div>
 
                     <nav className="hidden md:flex items-center gap-1">
-                        <NavLink to="/admin/dashboard" className={getNavClass}>Dashboard</NavLink>
-                        <NavLink to="/admin/quizzes" className={getNavClass}>Quizzes</NavLink>
-                        <NavLink to="/admin/categories" className={getNavClass}>Categories</NavLink>
-                        <NavLink to="/admin/leaderboard" className={getNavClass}>Leaderboard</NavLink>
+                        <NavLink to="/student/dashboard" className={getNavClass}>Dashboard</NavLink>
+                        <NavLink to="/student/quizzes" className={getNavClass}>Discover Quizzes</NavLink>
+                        <NavLink to="/student/history" className={getNavClass}>History</NavLink>
+                        <NavLink to="/student/leaderboard" className={getNavClass}>Leaderboard</NavLink>
                     </nav>
 
                     <div className="flex items-center gap-4">
                         <div className="flex items-center gap-2.5 bg-white/60 backdrop-blur-xs rounded-full py-1 pr-4 pl-1.5 shadow-glass-sm border border-white/60">
-                            <div className="w-7 h-7 bg-amber-100 text-amber-600 rounded-full flex items-center justify-center font-medium text-sm">
-                                {user?.name?.[0]?.toUpperCase() || 'A'}
+                            <div className="w-7 h-7 bg-sage-500 text-white rounded-full flex items-center justify-center font-medium text-sm">
+                                {user?.name?.[0]?.toUpperCase() || 'S'}
                             </div>
                             <span className="text-sm font-medium text-ink-700 truncate max-w-[100px]">{user?.name}</span>
                         </div>
@@ -66,4 +66,4 @@ const AdminLayout = () => {
     );
 };
 
-export default AdminLayout;
+export default StudentLayout;
