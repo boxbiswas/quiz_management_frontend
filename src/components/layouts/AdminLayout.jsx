@@ -30,7 +30,7 @@ const AdminLayout = () => {
                     <div className="flex items-center gap-2.5">
                         <img src={icon} alt="QuizVerse Logo" className="w-8 h-8 mix-blend-multiply object-contain" />
                         <span className="font-display font-semibold text-xl text-ink-900 tracking-tight">
-                            QuizVerse <span className="text-amber-500 text-sm ml-1 font-mono tracking-widest">ADMIN</span>
+                            QuizVerse <span className="text-[10px] ml-2 px-2.5 py-0.5 rounded-full bg-amber-500/10 text-amber-600 font-mono tracking-widest border border-amber-500/20 shadow-glass-sm">ADMIN</span>
                         </span>
                     </div>
 
