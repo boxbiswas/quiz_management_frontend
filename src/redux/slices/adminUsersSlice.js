@@ -1,16 +1,13 @@
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
-import axios from 'axios';
-
-const API_URL = import.meta.env.VITE_API_URL || 'http://localhost:3000';
+import api from '../../https/axios';
 
 // Fetch all users (students) with optional search
 export const fetchAdminUsers = createAsyncThunk(
     'adminUsers/fetchAll',
     async (searchQuery = '', { rejectWithValue }) => {
         try {
-            const response = await axios.get(`${API_URL}/api/admin/users`, {
-                params: { search: searchQuery },
-                withCredentials: true
+            const response = await api.get('/admin/users', {
+                params: { search: searchQuery }
             });
             return response.data;
         } catch (error) {
@@ -24,9 +21,7 @@ export const fetchAdminUserById = createAsyncThunk(
     'adminUsers/fetchById',
     async (userId, { rejectWithValue }) => {
         try {
-            const response = await axios.get(`${API_URL}/api/admin/users/${userId}`, {
-                withCredentials: true
-            });
+            const response = await api.get(`/admin/users/${userId}`);
             return response.data;
         } catch (error) {
             return rejectWithValue(error.response?.data?.message || 'Failed to fetch user details');
@@ -39,10 +34,9 @@ export const updateAdminUserStatus = createAsyncThunk(
     'adminUsers/updateStatus',
     async ({ userId, status }, { rejectWithValue }) => {
         try {
-            const response = await axios.patch(
-                `${API_URL}/api/admin/users/${userId}/status`,
-                { status },
-                { withCredentials: true }
+            const response = await api.patch(
+                `/admin/users/${userId}/status`,
+                { status }
             );
             return response.data.user;
         } catch (error) {
@@ -56,9 +50,7 @@ export const deleteAdminUser = createAsyncThunk(
     'adminUsers/delete',
     async (userId, { rejectWithValue }) => {
         try {
-            await axios.delete(`${API_URL}/api/admin/users/${userId}`, {
-                withCredentials: true
-            });
+            await api.delete(`/admin/users/${userId}`);
             return userId;
         } catch (error) {
             return rejectWithValue(error.response?.data?.message || 'Failed to delete user');

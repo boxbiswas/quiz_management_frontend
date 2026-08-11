@@ -18,6 +18,8 @@ import Unauthorized from './pages/Unauthorized';
 import AdminDashboard from './pages/Admin/AdminDashboard';
 import UserList from './pages/Admin/Users/UserList';
 import UserProfile from './pages/Admin/Users/UserProfile';
+import QuizList from './pages/Admin/Quizzes/QuizList';
+import QuizForm from './pages/Admin/Quizzes/QuizForm';
 
 // Student Pages
 import StudentDashboard from './pages/Student/StudentDashboard';
@@ -40,8 +42,10 @@ function App() {
             {/* User Management */}
             <Route path="users" element={<UserList />} />
             <Route path="users/:id" element={<UserProfile />} />
-            {/* Placeholders for future pages */}
-            <Route path="quizzes" element={<AdminDashboard />} />
+            {/* Quiz Management */}
+            <Route path="quizzes" element={<QuizList />} />
+            <Route path="quizzes/new" element={<QuizForm />} />
+            <Route path="quizzes/:id/edit" element={<QuizForm />} />
             <Route path="categories" element={<AdminDashboard />} />
             <Route path="leaderboard" element={<AdminDashboard />} />
           </Route>
