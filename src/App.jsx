@@ -30,6 +30,7 @@ import StudentDashboard from './pages/Student/StudentDashboard';
 import StudentQuizList from './pages/Student/Quizzes/QuizList';
 import StudentQuizDetails from './pages/Student/Quizzes/QuizDetails';
 import StudentTakeQuiz from './pages/Student/Quizzes/TakeQuiz';
+import StudentQuizResults from './pages/Student/Quizzes/QuizResults';
 
 function App() {
   return (
@@ -78,6 +79,7 @@ function App() {
             <Route path="quizzes" element={<StudentQuizList />} />
             <Route path="quizzes/:id" element={<StudentQuizDetails />} />
             <Route path="quizzes/:id/take" element={<StudentTakeQuiz />} />
+            <Route path="attempts/:id/results" element={<StudentQuizResults />} />
             
             <Route path="history" element={<StudentDashboard />} />
             <Route path="leaderboard" element={<StudentDashboard />} />

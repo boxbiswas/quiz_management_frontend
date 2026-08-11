@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useParams, Link, useNavigate } from 'react-router-dom';
 import { fetchStudentQuizDetails } from '../../../redux/slices/studentQuizzesSlice';
@@ -14,18 +14,23 @@ const QuizDetailsContent = () => {
     const { currentQuiz, loading: quizLoading, error: quizError } = useSelector((state) => state.studentQuizzes);
     const { loading: attemptLoading } = useSelector((state) => state.studentAttempt);
 
+    const [showConfirmModal, setShowConfirmModal] = useState(false);
+
     useEffect(() => {
         dispatch(fetchStudentQuizDetails(id));
     }, [dispatch, id]);
 
-    const handleStartQuiz = async () => {
-        if (window.confirm("Are you sure you want to start this quiz now? The timer will begin immediately.")) {
-            try {
-                await dispatch(startQuizAttempt(id)).unwrap();
-                navigate(`/student/quizzes/${id}/take`);
-            } catch (err) {
-                toast.error(err || "Unable to start quiz.");
-            }
+    const handleStartClick = () => {
+        setShowConfirmModal(true);
+    };
+
+    const handleConfirmStart = async () => {
+        setShowConfirmModal(false);
+        try {
+            await dispatch(startQuizAttempt(id)).unwrap();
+            navigate(`/student/quizzes/${id}/take`);
+        } catch (err) {
+            toast.error(err || "Unable to start quiz.");
         }
     };
 
@@ -123,7 +128,7 @@ const QuizDetailsContent = () => {
 
                     <div className="flex justify-center border-t border-warm-200/50 pt-10">
                         <button
-                            onClick={handleStartQuiz}
+                            onClick={handleStartClick}
                             disabled={attemptLoading}
                             className="bg-amber-500 hover:bg-amber-600 active:scale-[0.98] text-white font-body font-semibold text-lg px-12 py-4 rounded-full shadow-lg hover:shadow-amber-500/30 transition-all flex items-center gap-3 disabled:opacity-70 disabled:pointer-events-none"
                         >
@@ -133,6 +138,39 @@ const QuizDetailsContent = () => {
                     </div>
                 </div>
             </div>
+
+            {/* Custom Confirmation Modal */}
+            {showConfirmModal && (
+                <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-ink-900/40 backdrop-blur-sm animate-in fade-in duration-200">
+                    <div className="bg-white rounded-2xl shadow-xl w-full max-w-md overflow-hidden animate-in zoom-in-95 duration-200">
+                        <div className="bg-amber-50 p-6 flex flex-col items-center border-b border-amber-100">
+                            <div className="w-16 h-16 bg-amber-100 rounded-full flex items-center justify-center mb-4 text-amber-500">
+                                <Play className="w-8 h-8 ml-1" />
+                            </div>
+                            <h3 className="text-xl font-display font-semibold text-ink-900">Ready to begin?</h3>
+                        </div>
+                        <div className="p-6">
+                            <p className="text-ink-600 text-center font-body mb-8">
+                                Once you start, the timer will begin immediately and cannot be paused. Make sure you have a stable connection.
+                            </p>
+                            <div className="flex gap-3">
+                                <button
+                                    onClick={() => setShowConfirmModal(false)}
+                                    className="flex-1 py-3 px-4 rounded-xl border border-warm-200 text-ink-600 font-medium hover:bg-warm-50 transition-colors"
+                                >
+                                    Cancel
+                                </button>
+                                <button
+                                    onClick={handleConfirmStart}
+                                    className="flex-1 py-3 px-4 rounded-xl bg-amber-500 hover:bg-amber-600 text-white font-medium shadow-md transition-colors"
+                                >
+                                    Start Now
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            )}
         </div>
     );
 };

@@ -122,11 +122,11 @@ const TakeQuizContent = () => {
         if (isSubmitting) return; // Prevent double submit
         setIsSubmitting(true);
         try {
-            await dispatch(submitQuizAttempt({ quizId: id, answers })).unwrap();
+            const payload = await dispatch(submitQuizAttempt({ quizId: id, answers })).unwrap();
             dispatch(clearAttemptState());
             localStorage.removeItem(`quiz_index_${id}`); // Clean up the saved index
             toast.success("Quiz submitted successfully!");
-            navigate('/student/quizzes'); // Redirect back to list, or to results page in future
+            navigate(`/student/attempts/${payload.result.id}/results`);
         } catch (error) {
             toast.error(error || "Failed to submit quiz.");
             setIsSubmitting(false);

@@ -31,6 +31,19 @@ export const submitQuizAttempt = createAsyncThunk(
     }
 );
 
+// Fetch attempt details (for results view)
+export const fetchAttemptDetails = createAsyncThunk(
+    'studentAttempt/fetchAttemptDetails',
+    async (attemptId, thunkAPI) => {
+        try {
+            const response = await api.get(`/attempts/${attemptId}`);
+            return response.data; // { attemptDetails, review }
+        } catch (error) {
+            return thunkAPI.rejectWithValue(error.response?.data?.message || 'Failed to fetch attempt details');
+        }
+    }
+);
+
 const studentAttemptSlice = createSlice({
     name: 'studentAttempt',
     initialState: {
@@ -41,7 +54,12 @@ const studentAttemptSlice = createSlice({
         loading: false,
         submitLoading: false,
         error: null,
-        submitResult: null
+        submitResult: null,
+        
+        // Results State
+        attemptDetails: null,
+        attemptReview: [],
+        detailsLoading: false
     },
     reducers: {
         // Hydrate answers from local storage on refresh
@@ -97,6 +115,21 @@ const studentAttemptSlice = createSlice({
             })
             .addCase(submitQuizAttempt.rejected, (state, action) => {
                 state.submitLoading = false;
+                state.error = action.payload;
+            })
+            
+            // Fetch Attempt Details
+            .addCase(fetchAttemptDetails.pending, (state) => {
+                state.detailsLoading = true;
+                state.error = null;
+            })
+            .addCase(fetchAttemptDetails.fulfilled, (state, action) => {
+                state.detailsLoading = false;
+                state.attemptDetails = action.payload.attemptDetails;
+                state.attemptReview = action.payload.review;
+            })
+            .addCase(fetchAttemptDetails.rejected, (state, action) => {
+                state.detailsLoading = false;
                 state.error = action.payload;
             });
     }
