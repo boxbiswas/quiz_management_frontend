@@ -9,7 +9,7 @@ import ForgotPassword from './pages/ForgotPassword';
 import ResetPassword from './pages/ResetPassword';
 
 // Routing Guards & Layouts
-import ProtectedRoute from './components/protectedRoutes';
+import ProtectedRoute from './components/ProtectedRoutes';
 import AdminLayout from './components/layouts/AdminLayout';
 import StudentLayout from './components/layouts/StudentLayout';
 import Unauthorized from './pages/Unauthorized';
