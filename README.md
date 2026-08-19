@@ -320,7 +320,7 @@ sequenceDiagram
 Create a `.env` file inside `frontend/`:
 
 ```env
-VITE_API_URL=http://localhost:3000
+VITE_API_URL=your_backend_url
 ```
 
 This URL is used by Axios as the API base and must match the backend server location.
