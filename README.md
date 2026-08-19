@@ -2,6 +2,8 @@
 
 <div align="center">
 
+**🚀 Live Demo:** [https://quiz-management-frontend-gamma.vercel.app](https://quiz-management-frontend-gamma.vercel.app)
+
 ![React](https://img.shields.io/badge/React-19-61DAFB?style=for-the-badge&logo=react&logoColor=black)
 ![Vite](https://img.shields.io/badge/Vite-8-646CFF?style=for-the-badge&logo=vite&logoColor=white)
 ![Redux Toolkit](https://img.shields.io/badge/Redux_Toolkit-2-764ABC?style=for-the-badge&logo=redux&logoColor=white)
@@ -320,7 +322,7 @@ sequenceDiagram
 Create a `.env` file inside `frontend/`:
 
 ```env
-VITE_API_URL=http://localhost:3000
+VITE_API_URL=your_backend_url
 ```
 
 This URL is used by Axios as the API base and must match the backend server location.
